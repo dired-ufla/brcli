@@ -9,4 +9,5 @@ BrCLI (Backup & Restore Command-Line Interface) is a plug-in integrated in Moodl
 Please type the commands below to know how to use this plugin:
 
 `sudo -u www-data /usr/bin/php admin/tool/brcli/backup.php --help`
+
 `sudo -u www-data /usr/bin/php admin/tool/brcli/restore.php --help`
