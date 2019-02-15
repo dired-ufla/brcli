@@ -26,7 +26,7 @@ if ($unrecognized) {
 }
 
 if ($options['help'] || !($options['categoryid'])) {
-    echo get_string('helpoption', 'tool_brcli');
+    echo get_string('helpoptionbck', 'tool_brcli');
     die;
 }
 
@@ -92,6 +92,6 @@ foreach ($courses as $cs) {
     $bc->destroy();
     $index = $index + 1;
 }
-mtrace(get_string('backupdone', 'tool_brcli'));
+mtrace(get_string('operationdone', 'tool_brcli'));
 
 exit(0);
