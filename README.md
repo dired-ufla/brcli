@@ -15,3 +15,5 @@ Please type the commands below to know how to use this plugin:
 ## Release notes
 * v1.1 - it is mandatory to inform the destination folder.
 * v1.0 - the restore feature is available.
+* v0.2 - allows the admin to backup all courses of a specific category.
+* v0.1 - initial version.
