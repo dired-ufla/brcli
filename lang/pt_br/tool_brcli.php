@@ -21,8 +21,7 @@ $string['helpoptionbck'] =
 
 Opções:
 --categoryid=INTEGER        ID da categoria cujo backup será feito.
---destination=STRING        Caminho onde serão armazenados os arquivos de backup. Se não for informado
-                            os arquivos serão armazenados no diretório admin/tool/brcli/bcks.
+--destination=STRING        Caminho onde serão armazenados os arquivos de backup. 
 -h, --help                  Exibe a ajuda.
 
 Exemplo:

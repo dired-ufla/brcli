@@ -32,22 +32,17 @@ if ($options['help'] || !($options['categoryid']) || !($options['source'])) {
 
 $admin = get_admin();
 if (!$admin) {
-    mtrace(get_string('noadminaccount', 'tool_brcli'));
-    die;
+    cli_error(get_string('noadminaccount', 'tool_brcli'));
 }
 
 $dir = rtrim($options['source'], '/');
 if (empty($dir) || !file_exists($dir) || !is_dir($dir)) {    
-    mtrace(get_string('directoryerror', 'tool_brcli'));
-    die;
+    cli_error(get_string('directoryerror', 'tool_brcli'));
 }
 
 // Check that the category exists.
-if ($options['categoryid']) {
-    if ($DB->count_records('course_categories', array('id'=>$options['categoryid'])) == 0) {
-        mtrace(get_string('nocategory', 'tool_brcli'));
-        die;
-    }
+if ($DB->count_records('course_categories', array('id'=>$options['categoryid'])) == 0) {
+    cli_error(get_string('nocategory', 'tool_brcli'));
 } 
 
 $index = 1;
@@ -103,7 +98,6 @@ foreach ($sourcefiles as $sourcefile) {
     $controller->destroy();
     unset($controller);
 }
-
 
 mtrace(get_string('operationdone', 'tool_brcli'));
 

@@ -25,34 +25,25 @@ if ($unrecognized) {
     cli_error(get_string('unknowoption', 'tool_brcli', $unrecognized));
 }
 
-if ($options['help'] || !($options['categoryid'])) {
+if ($options['help'] || !($options['categoryid']) || !($options['destination'])) {
     echo get_string('helpoptionbck', 'tool_brcli');
     die;
 }
 
 $admin = get_admin();
 if (!$admin) {
-    mtrace(get_string('noadminaccount', 'tool_brcli'));
-    die;
+    cli_error(get_string('noadminaccount', 'tool_brcli'));
 }
 
 // Do we need to store backup somewhere else?
 $dir = rtrim($options['destination'], '/');
-if (!empty($dir)) {
-    if (!file_exists($dir) || !is_dir($dir) || !is_writable($dir)) {
-        mtrace(get_string('directoryerror', 'tool_brcli'));
-        die;
-    }
-} else {
-    $dir = __DIR__.'/bcks';
+if (empty($dir) || !file_exists($dir) || !is_dir($dir) || !is_writable($dir)) {
+    cli_error(get_string('directoryerror', 'tool_brcli'));
 }
 
 // Check that the category exists.
-if ($options['categoryid']) {
-    if ($DB->count_records('course_categories', array('id'=>$options['categoryid'])) == 0) {
-        mtrace(get_string('nocategory', 'tool_brcli'));
-        die;
-    }
+if ($DB->count_records('course_categories', array('id'=>$options['categoryid'])) == 0) {
+    cli_error(get_string('nocategory', 'tool_brcli'));
 } 
 
 $courses = $DB->get_records('course', array('category'=>$options['categoryid']));
