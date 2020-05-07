@@ -49,6 +49,8 @@ $index = 1;
 $sourcefiles = new FilesystemIterator($dir, FilesystemIterator::SKIP_DOTS);
 $amount_of_courses = iterator_count($sourcefiles);
 
+$failedBackups = [];
+
 foreach ($sourcefiles as $sourcefile) {
     if ($sourcefile->getExtension() !== 'mbz') {
         continue;
@@ -82,6 +84,9 @@ foreach ($sourcefiles as $sourcefile) {
 			$controller->execute_plan();
 		} catch (Exception $e) {
 			mtrace(get_string('restoringfailed', 'tool_brcli', $index));
+
+			$failedBackups[] = $sourcefile;
+
 			continue;
 		}
     } else {
@@ -105,5 +110,11 @@ foreach ($sourcefiles as $sourcefile) {
 }
 
 mtrace(get_string('operationdone', 'tool_brcli'));
+
+mtrace(get_string('restoringfailedlist', 'tool_brcli'));
+
+foreach ($failedBackups as $failedBackup) {
+	mtrace($failedBackup->getFilename());
+}
 
 exit(0);

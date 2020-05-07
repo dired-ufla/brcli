@@ -15,6 +15,7 @@ $string['nocategory'] = 'Error: No category was found!';
 $string['performingbck'] = 'Performing backup of the {$a} course...';
 $string['performingres'] = 'Restoring backup of the {$a} course...';
 $string['restoringfailed'] = 'Restoring backup of the {$a} course failed!';
+$string['restoringfailedlist'] = 'Failed backups:';
 $string['operationdone'] = 'Done!';
 $string['invalidbackupfile'] = 'Invalid backup file: {$a}';
 $string['helpoptionbck'] = 
