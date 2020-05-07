@@ -14,6 +14,7 @@ $string['directoryerror'] = 'Error: Destination directory does not exists or not
 $string['nocategory'] = 'Error: No category was found!';
 $string['performingbck'] = 'Performing backup of the {$a} course...';
 $string['performingres'] = 'Restoring backup of the {$a} course...';
+$string['restoringfailed'] = 'Restoring backup of the {$a} course failed!';
 $string['operationdone'] = 'Done!';
 $string['invalidbackupfile'] = 'Invalid backup file: {$a}';
 $string['helpoptionbck'] = 

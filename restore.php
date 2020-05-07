@@ -78,7 +78,12 @@ foreach ($sourcefiles as $sourcefile) {
     backup::INTERACTIVE_NO, backup::MODE_GENERAL, $userdoingrestore,
     backup::TARGET_NEW_COURSE);
     if ($controller->execute_precheck()) {
-        $controller->execute_plan();
+		try {
+			$controller->execute_plan();
+		} catch (Exception $e) {
+			mtrace(get_string('restoringfailed', 'tool_brcli', $index));
+			continue;
+		}
     } else {
         try {
             $transaction->rollback(new Exception('Prechecked failed'));
